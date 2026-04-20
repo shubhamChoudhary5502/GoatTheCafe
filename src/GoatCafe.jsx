@@ -391,13 +391,20 @@ const EVENTS = [
 
 function Events() {
   const scrollRef = useRef(null);
-  const scroll = (dir) => scrollRef.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
+  const scroll = (dir) => {
+    if (!scrollRef.current) return;
+    scrollRef.current.scrollBy({ left: dir * 330, behavior: "smooth" });
+  };
   const btnStyle = {
     position: "absolute", top: "50%", transform: "translateY(-50%)",
-    width: 44, height: 44, borderRadius: "50%", border: `1px solid ${C.gold}80`,
-    background: "rgba(201,168,76,0.15)", color: C.gold, cursor: "pointer",
+    width: 46, height: 46, borderRadius: "50%",
+    border: `1.5px solid ${C.gold}99`,
+    background: "rgba(26,26,26,0.95)",
+    color: C.gold, cursor: "pointer",
     display: "flex", alignItems: "center", justifyContent: "center",
-    zIndex: 10, transition: "background 0.2s",
+    zIndex: 50,
+    transition: "all 0.25s ease",
+    boxShadow: "0 4px 16px rgba(0,0,0,0.5), 0 0 0 6px rgba(26,26,26,0.6)",
   };
   return (
     <section id="events" style={{ background: C.bgCard, padding: "96px 0", overflow: "hidden" }}>
@@ -411,37 +418,69 @@ function Events() {
         </FadeUp>
       </div>
       {/* Scroll track with arrows */}
-      <div style={{ position: "relative" }}>
-        <button style={{ ...btnStyle, left: 8 }}
+      <div style={{ position: "relative", padding: "0 70px" }}>
+        <button style={{ ...btnStyle, left: 12 }}
           onClick={() => scroll(-1)}
-          onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.3)"}
-          onMouseLeave={e => e.currentTarget.style.background = "rgba(201,168,76,0.15)"}>
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "rgba(201,168,76,0.9)";
+            e.currentTarget.style.color = "#1a1a1a";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "rgba(26,26,26,0.95)";
+            e.currentTarget.style.color = "#c9a84c";
+          }}>
           <ChevronLeft size={20} />
         </button>
-        <div ref={scrollRef} style={{ display: "flex", gap: 20, overflowX: "auto", scrollSnapType: "x mandatory", padding: "0 60px 20px", scrollbarWidth: "none" }}>
-          {EVENTS.map((ev, i) => (
-            <FadeUp key={ev.title} delay={i * 0.07} style={{ flex: "0 0 310px", scrollSnapAlign: "start" }}>
-              <div style={{ background: C.goldGlow, border: `1px solid ${C.gold}22`, borderRadius: 20, overflow: "hidden", transition: "all 0.3s", height: "100%" }}
-                onMouseEnter={e => { e.currentTarget.style.border = `1px solid ${C.gold}44`; e.currentTarget.style.transform = "translateY(-4px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.border = `1px solid ${C.gold}22`; e.currentTarget.style.transform = "translateY(0)"; }}>
-                <img src={ev.img} alt={ev.title} style={{ width: "100%", height: 190, objectFit: "cover", display: "block", borderBottom: `1px solid ${C.gold}18` }} onError={e => { e.target.style.display = "none"; }} />
-                <div style={{ padding: "22px 24px 28px" }}>
-                  <div style={{ fontSize: 26, marginBottom: 12 }}>{ev.emoji}</div>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, color: C.cream, marginBottom: 6 }}>{ev.title}</h3>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: C.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>{ev.tag}</p>
-                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: C.muted, lineHeight: 1.72, marginBottom: 22 }}>{ev.desc}</p>
-                  <a href={WA} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: C.gold, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>
-                    Book Now <ChevronRight size={15} />
-                  </a>
+
+        <div style={{
+          position: "relative",
+          overflow: "hidden",
+          maskImage: "linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0, black 24px, black calc(100% - 24px), transparent 100%)"
+        }}>
+          <div ref={scrollRef} style={{
+            display: "flex",
+            gap: 20,
+            overflowX: "auto",
+            overflowY: "hidden",
+            scrollSnapType: "x mandatory",
+            scrollBehavior: "smooth",
+            padding: "10px 4px 24px",
+            scrollbarWidth: "none",
+            msOverflowStyle: "none"
+          }}>
+            {EVENTS.map((ev, i) => (
+              <FadeUp key={ev.title} delay={i * 0.07} style={{ flex: "0 0 310px", scrollSnapAlign: "start" }}>
+                <div style={{ background: C.goldGlow, border: `1px solid ${C.gold}22`, borderRadius: 20, overflow: "hidden", transition: "all 0.3s", height: "100%" }}
+                  onMouseEnter={e => { e.currentTarget.style.border = `1px solid ${C.gold}44`; e.currentTarget.style.transform = "translateY(-4px)"; }}
+                  onMouseLeave={e => { e.currentTarget.style.border = `1px solid ${C.gold}22`; e.currentTarget.style.transform = "translateY(0)"; }}>
+                  <img src={ev.img} alt={ev.title} style={{ width: "100%", height: 190, objectFit: "cover", display: "block", borderBottom: `1px solid ${C.gold}18` }}
+                    onError={e => { e.target.style.display = "none"; }} />
+                  <div style={{ padding: "22px 24px 28px" }}>
+                    <div style={{ fontSize: 26, marginBottom: 12 }}>{ev.emoji}</div>
+                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, color: C.cream, marginBottom: 6 }}>{ev.title}</h3>
+                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: C.gold, letterSpacing: 2, textTransform: "uppercase", marginBottom: 14 }}>{ev.tag}</p>
+                    <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: C.muted, lineHeight: 1.72, marginBottom: 22 }}>{ev.desc}</p>
+                    <a href={WA} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, color: C.gold, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, textDecoration: "none" }}>
+                      Book Now <ChevronRight size={15} />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </FadeUp>
-          ))}
+              </FadeUp>
+            ))}
+          </div>
         </div>
-        <button style={{ ...btnStyle, right: 8 }}
+
+        <button style={{ ...btnStyle, right: 12 }}
           onClick={() => scroll(1)}
-          onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.3)"}
-          onMouseLeave={e => e.currentTarget.style.background = "rgba(201,168,76,0.15)"}>
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "rgba(201,168,76,0.9)";
+            e.currentTarget.style.color = "#1a1a1a";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "rgba(26,26,26,0.95)";
+            e.currentTarget.style.color = "#c9a84c";
+          }}>
           <ChevronRight size={20} />
         </button>
       </div>
@@ -452,10 +491,13 @@ function Events() {
 /* ─── CATERING ───────────────────────────────────────────────── */
 const PLANS = [
   { name:"Basic",   tagline:"Perfect for small gatherings", price:"From ₹299/head", popular:false,
+    img:"/cafe-imgs/BasicPlan.png",
     features:["Serves 10–30 guests","Snacks & beverages","2 food counters","Basic setup & décor","WhatsApp coordination"] },
   { name:"Premium", tagline:"The most popular choice",      price:"From ₹599/head", popular:true,
+    img:"/cafe-imgs/PremiumPlan.png",
     features:["Serves 30–100 guests","Full meals + desserts","4 food counters","Branded setup & décor","Dedicated catering manager","Live station options"] },
   { name:"Grand",   tagline:"The full G.O.A.T experience",  price:"From ₹999/head", popular:false,
+    img:"/cafe-imgs/GrandPlan.png",
     features:["Serves 100+ guests","Multi-course meals","Premium live stations","Custom theme décor","Full event coordination","Photo-ready plating","Post-event cleanup"] },
 ];
 
@@ -483,7 +525,20 @@ function Catering() {
                     Most Popular
                   </div>
                 )}
-                <Placeholder label={`${p.name} Plan`} height={160} style={{ marginBottom: 24 }} />
+                <img
+                  src={p.img}
+                  alt={`${p.name} catering plan`}
+                  style={{
+                    width: "100%",
+                    height: 180,
+                    objectFit: "cover",
+                    borderRadius: 12,
+                    marginBottom: 24,
+                    display: "block",
+                    border: "1px solid #c9a84c22"
+                  }}
+                  onError={e => { e.target.style.display = "none"; }}
+                />
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 30, color: p.popular ? C.gold : C.cream, marginBottom: 4 }}>{p.name}</h3>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: C.muted, marginBottom: 8 }}>{p.tagline}</p>
                 <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 700, color: C.gold, marginBottom: 24 }}>{p.price}</p>
@@ -703,7 +758,11 @@ const TABS = ["All","Coffee","Tea & Hot","Juice","Milkshakes","Chillers","Ice Cr
 
 function MenuSection() {
   const [active, setActive] = useState("All");
+  const [showAll, setShowAll] = useState(false);
+  useEffect(() => { setShowAll(false); }, [active]);
   const items = active === "All" ? MENU_ITEMS : MENU_ITEMS.filter(m => m.cat === active);
+  const isAllTab = active === "All";
+  const visibleItems = (isAllTab && !showAll) ? items.slice(0, 12) : items;
   return (
     <section id="menu" style={{ background: C.bg, padding: "96px 0" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 28px" }}>
@@ -762,7 +821,7 @@ function MenuSection() {
         </FadeUp>
         {/* Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px,1fr))", gap: 20 }}>
-          {items.map((item, i) => (
+          {visibleItems.map((item, i) => (
             <FadeUp key={item.name + i} delay={i * 0.04}>
               <div style={{ background: item.soon ? "rgba(255,255,255,0.01)" : item.cat === "Signature" ? `rgba(201,168,76,0.12)` : C.goldGlow, border: `1px solid ${item.soon ? C.gold+"0d" : item.cat === "Signature" ? C.gold+"66" : C.gold+"18"}`, borderRadius: 16, overflow: "hidden", transition: "all 0.3s", opacity: item.soon ? 0.65 : 1 }}
                 onMouseEnter={e => { if (!item.soon) { e.currentTarget.style.border=`1px solid ${C.gold}44`; e.currentTarget.style.transform="translateY(-3px)"; }}}
@@ -808,6 +867,37 @@ function MenuSection() {
             </FadeUp>
           ))}
         </div>
+        {isAllTab && items.length > 12 && (
+          <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
+            <button
+              onClick={() => setShowAll(!showAll)}
+              style={{
+                background: "rgba(201,168,76,0.12)",
+                border: "1.5px solid #c9a84c",
+                color: "#c9a84c",
+                padding: "14px 36px",
+                borderRadius: 100,
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: 13,
+                fontWeight: 600,
+                letterSpacing: 1.5,
+                textTransform: "uppercase",
+                cursor: "pointer",
+                transition: "all 0.25s ease",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.background = "#c9a84c";
+                e.currentTarget.style.color = "#1a1a1a";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.background = "rgba(201,168,76,0.12)";
+                e.currentTarget.style.color = "#c9a84c";
+              }}
+            >
+              {showAll ? "Show Less" : `Show More Items (${items.length - 12} more)`}
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -896,10 +986,10 @@ function Gallery() {
     { id:3,             src:"/cafe-imgs/cafe-outdoor1.jpeg",  label:"Outdoor Seating" },
     { id:4,             src:"/cafe-imgs/cafe-outdoor2.jpeg",  label:"Open Air Dining" },
     { id:5, tall:true,  src:"/cafe-imgs/cafe-front.jpeg",    label:"The Entrance" },
-    { id:6,             src:null,                             label:"Gallery 6" },
-    { id:7,             src:null,                             label:"Gallery 7" },
+    { id:6,             src:"/cafe-imgs/cafe-indoor.jpeg",   label:"Gallery 6" },
+    { id:7,             src:"/cafe-imgs/Crispy Vadapav.jpg",                             label:"Gallery 7" },
     { id:8,             src:null,                             label:"Gallery 8" },
-    { id:9,             src:null,                             label:"Gallery 9" },
+    { id:9,             src:"/cafe-imgs/Dahipuri.webp",                             label:"Gallery 9" },
   ];
   return (
     <section id="gallery" style={{ background: C.bg, padding: "96px 0" }}>
@@ -914,7 +1004,55 @@ function Gallery() {
               style={{ position: "relative", gridRow: item.tall ? "span 2" : "span 1", borderRadius: 14, overflow: "hidden", cursor: "pointer", border: `1.5px solid ${hov === item.id ? C.gold+"88" : C.gold+"22"}`, transition: "border-color 0.25s, transform 0.25s", transform: hov === item.id ? "scale(1.01)" : "scale(1)" }}
               onMouseEnter={() => setHov(item.id)}
               onMouseLeave={() => setHov(null)}>
-              {item.src ? (
+              {item.id === 1 ? (
+                <video
+                  src="/cafe-imgs/gallery-1.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    borderRadius: "inherit"
+                  }}
+                  onError={e => { e.target.style.display = "none"; }}
+                />
+              ) : item.id === 5 ? (
+                <video
+                  src="/cafe-imgs/gallery-5.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    borderRadius: "inherit"
+                  }}
+                  onError={e => { e.target.style.display = "none"; }}
+                />
+              ) : item.id === 8 ? (
+                <video
+                  src="/cafe-imgs/gallery-8.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    borderRadius: "inherit"
+                  }}
+                  onError={e => { e.target.style.display = "none"; }}
+                />
+              ) : item.src ? (
                 <img src={item.src} alt={item.label} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block" }} />
               ) : (
                 <div style={{ width:"100%", height:"100%", background:C.goldGlow, display:"flex", alignItems:"center", justifyContent:"center" }}>
@@ -1157,7 +1295,17 @@ function Contact() {
         </div>
         {/* Map banner placeholder */}
         <FadeUp delay={0.2}>
-          <Placeholder label="Map Banner Image" height={180} style={{ marginTop: 48, borderRadius: 16 }} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, borderRadius: 16, overflow: "hidden", marginTop: 48 }}>
+            {["cafe-front.jpeg", "cafe-indoor.jpeg", "cafe-outdoor1.jpeg", "cafe-outdoor2.jpeg"].map((f, i) => (
+              <img
+                key={i}
+                src={`/cafe-imgs/${f}`}
+                alt={`Café view ${i+1}`}
+                style={{ width: "100%", height: 200, objectFit: "cover", display: "block" }}
+                onError={e => { e.target.style.display = "none"; }}
+              />
+            ))}
+          </div>
         </FadeUp>
       </div>
       <style>{`@media(max-width:820px){.contact-grid{grid-template-columns:1fr!important;}}`}</style>
@@ -1182,7 +1330,7 @@ function Footer() {
           </div>
           {[
             { heading:"Navigate",  links:[["Menu","menu"],["Events","events"],["Catering","catering"],["Gallery","gallery"],["Contact","contact"]] },
-            { heading:"Connect",   links:[["Instagram","https://instagram.com"],["WhatsApp",WA],["Google Maps",MAPS_LINK],["Email",`mailto:${EMAIL}`]] },
+            { heading:"Connect",   links:[["Instagram","https://www.instagram.com/thegoatcafe_official"],["WhatsApp",WA],["Google Maps",MAPS_LINK],["Email",`mailto:${EMAIL}`]] },
             { heading:"Visit",     links:[["JSS S&TU Canteen",""],["Mysuru, Karnataka",""],["570006",""]] },
           ].map(({ heading, links }) => (
             <div key={heading}>
@@ -1204,7 +1352,7 @@ function Footer() {
         <GoldLine />
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 28, flexWrap: "wrap", gap: 12 }}>
           <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: C.muted }}>
-            Made with ☕ at JSS University · © {new Date().getFullYear()} G.O.A.T The Café · Greatest Of All Taste
+            Made with ❤️ by SHUBHAM 9508372431· © {new Date().getFullYear()} G.O.A.T The Café · Greatest Of All Taste
           </p>
           <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 14, color: C.muted, fontStyle:"italic" }}>
             The conversation doesn't end here… Let's continue it over a great cup of coffee and delicious food. ☕ See you at G.O.A.T Café.
