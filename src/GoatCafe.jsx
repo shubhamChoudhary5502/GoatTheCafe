@@ -163,7 +163,7 @@ function Navbar() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 28px", height: 72, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           {/* Logo */}
           <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center" }}>
-            <img src="/cafe-imgs/goat-logo.png" alt="G.O.A.T The Café" style={{ height: 52, display: "block", borderRadius: 6 }} />
+            <img src="/cafe-imgs/logo.png" alt="G.O.A.T The Café" style={{ height: 52, display: "block", borderRadius: 6 }} />
           </button>
           {/* Desktop links */}
           <div style={{ display: "flex", alignItems: "center", gap: 36 }} className="desktop-nav">
@@ -211,6 +211,32 @@ function Navbar() {
 function Hero() {
   return (
     <section style={{ background: C.bgDeep, minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden", padding: "120px 28px 80px" }}>
+      {/* Full-bleed background image */}
+      <img
+        src="/cafe-imgs/cafe-indoor.jpeg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+          filter: "brightness(0.45) saturate(1.1)"
+        }}
+      />
+      {/* Dark gradient overlay for readability */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "linear-gradient(135deg, rgba(17,17,17,0.85) 0%, rgba(17,17,17,0.55) 50%, rgba(17,17,17,0.75) 100%)",
+        zIndex: 1
+      }} />
       {/* Decorative rings */}
       {[600, 480, 360].map((s, i) => (
         <div key={s} style={{ position: "absolute", top: "50%", right: "-15%", width: s, height: s, borderRadius: "50%", border: `1px solid ${C.gold}${["0d","0a","07"][i]}`, transform: "translateY(-50%)", pointerEvents: "none", animation: i === 0 ? "rotateRing 40s linear infinite" : "none" }} />
@@ -220,7 +246,7 @@ function Hero() {
       {/* Gold glow blob */}
       <div style={{ position: "absolute", bottom: "-20%", left: "-10%", width: 600, height: 600, borderRadius: "50%", background: `radial-gradient(circle, ${C.gold}08 0%, transparent 70%)`, pointerEvents: "none" }} />
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: 720, width: "100%", position: "relative", zIndex: 2, padding: "0 8px" }}>
         {/* Badge */}
         <FadeUp>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 10, border: `1px solid ${C.gold}44`, borderRadius: 100, padding: "8px 18px", marginBottom: 36, background: C.goldGlow }}>
@@ -231,62 +257,46 @@ function Hero() {
           </div>
         </FadeUp>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }} className="hero-grid">
-          <div>
-            <FadeUp delay={0.08}>
-              <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(50px, 7.5vw, 96px)", fontWeight: 700, color: C.cream, lineHeight: 1.0, marginBottom: 28 }}>
-                Greatest<br />
-                <em style={{ color: C.gold, fontStyle: "italic" }}>Of All</em><br />
-                Taste.
-              </h1>
-            </FadeUp>
-            <FadeUp delay={0.16}>
-              <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, color: C.text, lineHeight: 1.75, maxWidth: 440, marginBottom: 40 }}>
-                Crafted with Quality. Served with Care. JSS University's most-loved 100% vegetarian café — where every bite is made from real ingredients and honest cooking.
-              </p>
-            </FadeUp>
-            <FadeUp delay={0.22}>
-              <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                <button onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}
-                  style={{ background: C.gold, color: C.dark, border: "none", padding: "16px 32px", borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 13, letterSpacing: 1, textTransform: "uppercase", cursor: "pointer", transition: "all 0.25s" }}
-                  onMouseEnter={e => { e.target.style.background = C.goldLight; e.target.style.transform = "scale(1.03)"; }}
-                  onMouseLeave={e => { e.target.style.background = C.gold; e.target.style.transform = "scale(1)"; }}>
-                  Explore Menu
-                </button>
-                <a href={WA} target="_blank" rel="noopener noreferrer"
-                  style={{ background: "transparent", color: C.cream, border: `1.5px solid ${C.cream}44`, padding: "16px 32px", borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: 1, textTransform: "uppercase", textDecoration: "none", transition: "all 0.25s" }}
-                  onMouseEnter={e => { e.target.style.borderColor = C.gold; e.target.style.color = C.gold; }}
-                  onMouseLeave={e => { e.target.style.borderColor = `${C.cream}44`; e.target.style.color = C.cream; }}>
-                  Book a Table
-                </a>
-              </div>
-            </FadeUp>
-            {/* Stats strip */}
-            <FadeUp delay={0.3}>
-              <div style={{ display: "flex", gap: 32, marginTop: 52, paddingTop: 32, borderTop: `1px solid ${C.gold}1a` }}>
-                {[["10K+","Students Served"],["4.8★","Google Rating"],["100%","Fresh Daily"]].map(([n, l]) => (
-                  <div key={l}>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, fontWeight: 700, color: C.gold, lineHeight: 1 }}>{n}</div>
-                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: C.muted, letterSpacing: 1, marginTop: 4 }}>{l}</div>
-                  </div>
-                ))}
-              </div>
-            </FadeUp>
+        <FadeUp delay={0.08}>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(50px, 7.5vw, 96px)", fontWeight: 700, color: C.cream, lineHeight: 1.0, marginBottom: 28 }}>
+            Greatest<br />
+            <em style={{ color: C.gold, fontStyle: "italic" }}>Of All</em><br />
+            Taste.
+          </h1>
+        </FadeUp>
+        <FadeUp delay={0.16}>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, color: C.text, lineHeight: 1.75, maxWidth: 560, marginBottom: 40 }}>
+            Crafted with Quality. Served with Care. JSS University's most-loved 100% vegetarian café — where every bite is made from real ingredients and honest cooking.
+          </p>
+        </FadeUp>
+        <FadeUp delay={0.22}>
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <button onClick={() => document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" })}
+              style={{ background: C.gold, color: C.dark, border: "none", padding: "16px 32px", borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 13, letterSpacing: 1, textTransform: "uppercase", cursor: "pointer", transition: "all 0.25s" }}
+              onMouseEnter={e => { e.target.style.background = C.goldLight; e.target.style.transform = "scale(1.03)"; }}
+              onMouseLeave={e => { e.target.style.background = C.gold; e.target.style.transform = "scale(1)"; }}>
+              Explore Menu
+            </button>
+            <a href={WA} target="_blank" rel="noopener noreferrer"
+              style={{ background: "transparent", color: C.cream, border: `1.5px solid ${C.cream}44`, padding: "16px 32px", borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: 1, textTransform: "uppercase", textDecoration: "none", transition: "all 0.25s" }}
+              onMouseEnter={e => { e.target.style.borderColor = C.gold; e.target.style.color = C.gold; }}
+              onMouseLeave={e => { e.target.style.borderColor = `${C.cream}44`; e.target.style.color = C.cream; }}>
+              Book a Table
+            </a>
           </div>
-
-          {/* Hero image */}
-          <FadeUp delay={0.12} style={{ animation: "heroFloat 6s ease-in-out infinite" }}>
-            <div style={{ position: "relative" }}>
-              <img src="/cafe-imgs/cafe-indoor.jpeg" alt="G.O.A.T The Café" style={{ width:"100%", height:480, objectFit:"cover", borderRadius:20, display:"block", border:`1.5px solid ${C.gold}33` }} />
-              {/* Floating pill */}
-              <div style={{ position: "absolute", bottom: -18, left: -18, background: C.gold, color: C.dark, padding: "12px 22px", borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: 0.5, boxShadow: `0 8px 32px ${C.gold}44` }}>
-                🌿 Greatest Of All Taste
+        </FadeUp>
+        {/* Stats strip */}
+        <FadeUp delay={0.3}>
+          <div style={{ display: "flex", gap: 32, marginTop: 52, paddingTop: 32, borderTop: `1px solid ${C.gold}1a` }}>
+            {[["5K+","Students Served"],["4.8★","Google Rating"],["100%","Fresh Daily"]].map(([n, l]) => (
+              <div key={l}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 26, fontWeight: 700, color: C.gold, lineHeight: 1 }}>{n}</div>
+                <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: C.muted, letterSpacing: 1, marginTop: 4 }}>{l}</div>
               </div>
-            </div>
-          </FadeUp>
-        </div>
+            ))}
+          </div>
+        </FadeUp>
       </div>
-      <style>{`@media(max-width:900px){.hero-grid{grid-template-columns:1fr!important;}}`}</style>
     </section>
   );
 }
@@ -294,42 +304,64 @@ function Hero() {
 /* ─── VISION & MISSION ───────────────────────────────────────── */
 function VisionMission() {
   return (
-    <Section bg={C.bgCard}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }} className="vm-grid">
-        <FadeUp>
-          <div>
-            <Overline text="Our Ethos" />
-            <div style={{ marginBottom: 40 }}>
-              <div style={{ borderLeft: `3px solid ${C.gold}`, paddingLeft: 24, marginBottom: 36 }}>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: C.gold, marginBottom: 12, fontWeight: 600 }}>Vision</p>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(22px, 3vw, 30px)", color: C.cream, lineHeight: 1.45, fontStyle: "italic" }}>
-                  "To make G.O.A.T Café a trusted destination for great taste and honest food — where people gather, celebrate, and enjoy dishes made with genuine care."
-                </p>
-              </div>
-              <div style={{ borderLeft: `3px solid ${C.gold}30`, paddingLeft: 24 }}>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: C.gold, marginBottom: 12, fontWeight: 600 }}>Mission</p>
-                <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: C.text, lineHeight: 1.8 }}>
-                  We strive to build a café experience that combines exceptional taste, responsible cooking, and a welcoming space for memorable moments — because at G.O.A.T, taste is crafted with integrity, and every meal is made to be both flavorful and wholesome.
-                </p>
-              </div>
-            </div>
-            <GoldLine style={{ width: "60%" }} />
-            <div style={{ display: "flex", gap: 36, marginTop: 32 }}>
-              {[["10K+","Customers"],["4.8","Stars"],["3+","Years"]].map(([n, l]) => (
-                <div key={l}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 30, fontWeight: 700, color: C.gold }}>{n}</div>
-                  <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: C.muted, letterSpacing: 1 }}>{l}</div>
+    <section style={{ background: C.bgCard, padding: "96px 0", position: "relative", overflow: "hidden" }}>
+      <img
+        src="/cafe-imgs/cafe-outdoor2.jpeg"
+        alt=""
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: 0,
+          filter: "brightness(0.7) saturate(1.1)"
+        }}
+      />
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        background: "linear-gradient(90deg, rgba(17,17,17,0.88) 0%, rgba(17,17,17,0.55) 55%, rgba(17,17,17,0.25) 100%)",
+        zIndex: 1
+      }} />
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 28px", position: "relative", zIndex: 2 }}>
+        <div style={{ maxWidth: 720 }}>
+          <FadeUp>
+            <div>
+              <Overline text="Our Ethos" />
+              <div style={{ marginBottom: 40 }}>
+                <div style={{ borderLeft: `3px solid ${C.gold}`, paddingLeft: 24, marginBottom: 36 }}>
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: C.gold, marginBottom: 12, fontWeight: 600 }}>Vision</p>
+                  <p style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(22px, 3vw, 30px)", color: C.cream, lineHeight: 1.45, fontStyle: "italic" }}>
+                    "To make G.O.A.T Café a trusted destination for great taste and honest food — where people gather, celebrate, and enjoy dishes made with genuine care."
+                  </p>
                 </div>
-              ))}
+                <div style={{ borderLeft: `3px solid ${C.gold}30`, paddingLeft: 24 }}>
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 10, letterSpacing: 3, textTransform: "uppercase", color: C.gold, marginBottom: 12, fontWeight: 600 }}>Mission</p>
+                  <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, color: C.text, lineHeight: 1.8 }}>
+                    We strive to build a café experience that combines exceptional taste, responsible cooking, and a welcoming space for memorable moments — because at G.O.A.T, taste is crafted with integrity, and every meal is made to be both flavorful and wholesome.
+                  </p>
+                </div>
+              </div>
+              <GoldLine style={{ width: "60%" }} />
+              <div style={{ display: "flex", gap: 36, marginTop: 32 }}>
+                {[["5K+","Customers"],["4.8","Stars"],["8+","Months"]].map(([n, l]) => (
+                  <div key={l}>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 30, fontWeight: 700, color: C.gold }}>{n}</div>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 11, color: C.muted, letterSpacing: 1 }}>{l}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </FadeUp>
-        <FadeUp delay={0.15}>
-          <img src="/cafe-imgs/cafe-outdoor2.jpeg" alt="G.O.A.T Café outdoor seating" style={{ width:"100%", height:440, objectFit:"cover", borderRadius:20, display:"block", border:`1.5px solid ${C.gold}22` }} />
-        </FadeUp>
+          </FadeUp>
+        </div>
       </div>
-      <style>{`@media(max-width:820px){.vm-grid{grid-template-columns:1fr!important;}}`}</style>
-    </Section>
+    </section>
   );
 }
 
@@ -337,7 +369,7 @@ function VisionMission() {
 const OFFERS = [
   { emoji:"🎓", title:"Student Combo Deals",    desc:"Show your JSS ID and unlock specially priced combos on meals and beverages every single day.", img:"/cafe-imgs/Student Combo Deals.jpg" },
   { emoji:"☕", title:"Happy Hours 4–6 PM",     desc:"Wind down the day right. Special pricing on all beverages and snacks — Mon through Sat.", img:"/cafe-imgs/Happy Hours 4–6 PM.jpg" },
-  { emoji:"🍳", title:"Weekend Brunches",       desc:"Extended menu, relaxed vibes, and freshly plated specials every Saturday and Sunday.", img:"/cafe-imgs/Weekend Brunches.jpg" },
+  { emoji:"🍳", title:"Saturday Brunches",      desc:"Extended menu, relaxed vibes, and freshly plated specials every Saturday.", img:"/cafe-imgs/Weekend Brunches.jpg" },
   { emoji:"⭐", title:"Loyalty Rewards",         desc:"Earn points with every order. Your 10th coffee is on us — and it only gets better from there.", img:"/cafe-imgs/Loyalty Rewards.jpg" },
   { emoji:"👥", title:"Group Discounts",        desc:"Bring 5 or more friends and enjoy 15% off your total. Great food tastes better together.", img:"/cafe-imgs/Group Discounts.jpg" },
   { emoji:"🌿", title:"Seasonal Specials",      desc:"Limited-edition menu items that celebrate every season, festival, and reason to celebrate.", img:"/cafe-imgs/Seasonal Specials.jpg" },
@@ -1099,7 +1131,7 @@ function Reviews() {
       <FadeUp>
         <Overline text="What They're Saying" />
         <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", flexWrap: "wrap", gap: 20, marginBottom: 48 }}>
-          <H2>Rated 🐐 by<br />Real People.</H2>
+          <H2>Rated by<br /><em style={{ color: C.gold, fontStyle: "italic" }}>Real People.</em></H2>
           <div style={{ background: C.goldGlow, border: `1px solid ${C.gold}33`, borderRadius: 100, padding: "10px 22px", display: "flex", alignItems: "center", gap: 10, alignSelf: "flex-end" }}>
             <Stars n={5} size={13} />
             <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, color: C.gold, fontWeight: 600 }}>4.8 on Google · 500+ Reviews</span>
@@ -1143,10 +1175,35 @@ function Feedback() {
   const [hover, setHover] = useState(0);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
-    setDone(true);
+    setSubmitting(true);
+    setError(null);
+    const formData = new FormData(e.target);
+    try {
+      const response = await fetch("https://formspree.io/f/xzdyvklv", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" }
+      });
+      if (response.ok) {
+        setSubmitted(true);
+        setDone(true);
+        e.target.reset();
+        setForm({ name: "", email: "", message: "" });
+        setRating(0);
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const iStyle = {
@@ -1177,7 +1234,7 @@ function Feedback() {
                   <p style={{ fontFamily: "'DM Sans', sans-serif", color: "#777", fontSize: 14 }}>Your feedback helps us be better every day.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form action="https://formspree.io/f/xzdyvklv" method="POST" onSubmit={handleFeedbackSubmit}>
                   <div style={{ marginBottom: 18 }}>
                     <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "#666", marginBottom: 8, letterSpacing: 0.5 }}>Your Rating</p>
                     <div style={{ display: "flex", gap: 4 }}>
@@ -1186,16 +1243,47 @@ function Feedback() {
                           onMouseEnter={() => setHover(n)} onMouseLeave={() => setHover(0)} onClick={() => setRating(n)} />
                       ))}
                     </div>
+                    <input type="hidden" name="rating" value={rating} />
                   </div>
-                  <input type="text"    placeholder="Your Name"         value={form.name}    onChange={e => setForm({...form, name: e.target.value})}    style={iStyle} />
-                  <input type="email"   placeholder="Email Address"     value={form.email}   onChange={e => setForm({...form, email: e.target.value})}   style={iStyle} />
-                  <textarea placeholder="Tell us about your experience..." value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={4}
+                  <input type="text"    name="name"    placeholder="Your Name"         value={form.name}    onChange={e => setForm({...form, name: e.target.value})}    style={iStyle} />
+                  <input type="email"   name="email"   placeholder="Email Address"     value={form.email}   onChange={e => setForm({...form, email: e.target.value})}   style={iStyle} />
+                  <textarea name="message" placeholder="Tell us about your experience..." value={form.message} onChange={e => setForm({...form, message: e.target.value})} rows={4}
                     style={{ ...iStyle, resize: "none", marginBottom: 20 }} />
-                  <button type="submit" style={{ width: "100%", background: C.gold, color: C.dark, border: "none", padding: 14, borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14, cursor: "pointer", transition: "all 0.2s" }}
-                    onMouseEnter={e => e.target.style.background = C.goldLight}
-                    onMouseLeave={e => e.target.style.background = C.gold}>
-                    Submit Feedback
+                  <button type="submit" disabled={submitting} style={{ width: "100%", background: C.gold, color: C.dark, border: "none", padding: 14, borderRadius: 100, fontFamily: "'DM Sans', sans-serif", fontWeight: 700, fontSize: 14, cursor: submitting ? "not-allowed" : "pointer", opacity: submitting ? 0.6 : 1, transition: "all 0.2s" }}
+                    onMouseEnter={e => { if (!submitting) e.target.style.background = C.goldLight; }}
+                    onMouseLeave={e => { if (!submitting) e.target.style.background = C.gold; }}>
+                    {submitting ? "Sending..." : "Send Feedback"}
                   </button>
+                  {submitted && (
+                    <div style={{
+                      marginTop: 20,
+                      padding: "14px 20px",
+                      borderRadius: 10,
+                      background: "rgba(37, 211, 102, 0.15)",
+                      border: "1px solid #25D366",
+                      color: "#25D366",
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 14,
+                      textAlign: "center"
+                    }}>
+                      ✓ Thank you! Your feedback has been sent successfully.
+                    </div>
+                  )}
+                  {error && (
+                    <div style={{
+                      marginTop: 20,
+                      padding: "14px 20px",
+                      borderRadius: 10,
+                      background: "rgba(255, 80, 80, 0.15)",
+                      border: "1px solid #ff5050",
+                      color: "#ff8080",
+                      fontFamily: "'DM Sans', sans-serif",
+                      fontSize: 14,
+                      textAlign: "center"
+                    }}>
+                      {error}
+                    </div>
+                  )}
                 </form>
               )}
             </div>
@@ -1250,7 +1338,7 @@ function Contact() {
                 { icon:<MapPin size={17}/>,  label:"Address", val:"G.O.A.T The Café\nJSS Science and Technology University\nCanteen, Mysuru, Karnataka 570006" },
                 { icon:<Phone size={17}/>,   label:"Phone",   val:PHONE },
                 { icon:<Mail size={17}/>,    label:"Email",   val:EMAIL },
-                { icon:<Clock size={17}/>,   label:"Hours",   val:"Mon–Sat: 8:00 AM – 9:00 PM\nSun: 10:00 AM – 8:00 PM" },
+                { icon:<Clock size={17}/>,   label:"Hours",   val:"Mon–Sat: 8:00 AM – 9:00 PM\nSun: Closed" },
               ].map(({ icon, label, val }) => (
                 <div key={label} style={{ display: "flex", gap: 16, marginBottom: 28 }}>
                   <div style={{ color: C.gold, flexShrink: 0, marginTop: 2 }}>{icon}</div>
@@ -1262,7 +1350,7 @@ function Contact() {
               ))}
               <div style={{ display: "flex", gap: 10, marginTop: 36, flexWrap: "wrap" }}>
                 {[
-                  { href:"https://instagram.com", icon:<Instagram size={16}/>, label:"Instagram" },
+                  { href:"https://www.instagram.com/thegoatcafe_official?igsh=emZteTA5MWQ3cnRx", icon:<Instagram size={16}/>, label:"Instagram" },
                   { href:WA,                       icon:<MessageCircle size={16}/>, label:"WhatsApp" },
                   { href:MAPS_LINK,                icon:<MapPin size={16}/>, label:"Google Maps" },
                 ].map(({ href, icon, label }) => (
@@ -1321,7 +1409,7 @@ function Footer() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr", gap: 40, marginBottom: 56 }} className="footer-grid">
           <div>
-            <img src="/cafe-imgs/goat-logo.png" alt="G.O.A.T The Café" style={{ height: 44, display: "block", borderRadius: 6 }} />
+            <img src="/cafe-imgs/logo.png" alt="G.O.A.T The Café" style={{ height: 44, display: "block", borderRadius: 6 }} />
             <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 15, color: C.muted, fontStyle: "italic", lineHeight: 1.7, maxWidth: 260 }}>
               "Crafted with Quality. Served with Care."
             </p>
