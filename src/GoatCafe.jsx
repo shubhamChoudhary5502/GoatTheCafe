@@ -654,21 +654,21 @@ const MENU_ITEMS = [
   { name:"Cinnamon Coffee",             price:"₹25",  desc:"Warm coffee infused with real cinnamon. Cosy, spiced, and deeply comforting.",                 veg:true, cat:"Coffee",     soon:false, img:"/cafe-imgs/Cinnamon Coffee.webp" },
   { name:"Elaichi Coffee",              price:"₹25",  desc:"Hot coffee kissed with green cardamom. Fragrant, aromatic, and unmistakably Indian.",          veg:true, cat:"Coffee",     soon:false, img:"/cafe-imgs/Elachi coffee.webp" },
   { name:"Ginger Coffee",               price:"₹25",  desc:"Bold coffee with a fresh ginger kick. The ultimate wake-up call on campus.",                   veg:true, cat:"Coffee",     soon:false, img:"/cafe-imgs/ginger coffee.webp" },
-  { name:"Interesting Coffee (Special)",price:"₹25",  desc:"Our G.O.A.T signature blend — a mystery recipe that's earned a cult following on campus.",     veg:true, cat:"Coffee",     soon:false, img:"/cafe-imgs/regular_coffee.webp" },
+  { name:"Interesting Coffee (Special)",price:"₹25",  desc:"Our G.O.A.T signature blend — a mystery recipe that's earned a cult following on campus.",     veg:true, cat:"Coffee",     soon:false, img:"/cafe-imgs/Interesting_coffee.jpg" },
   /* ── TEA TOTALER ── */
-  { name:"Regular Tea",                 price:"₹15",  desc:"Simple, honest, perfectly brewed. Because sometimes simple is everything.",                    veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Mysore Masala Tea.webp" },
+  { name:"Regular Tea",                 price:"₹15",  desc:"Simple, honest, perfectly brewed. Because sometimes simple is everything.",                    veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/regular_tea.webp" },
   { name:"Ashwagandha Tea",             price:"₹20",  desc:"Adaptogenic ashwagandha brewed warm. Stress less, sip more.",                                 veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/ashwagandha tea.webp" },
   { name:"Lemongrass / Tulsi Mint Tea", price:"₹20",  desc:"Lemongrass and holy basil with fresh mint. Nature's most refreshing combo.",                  veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/lemongrass tulsi tea.webp" },
   { name:"Mysore Masala Tea",           price:"₹20",  desc:"The iconic Mysuru-style masala chai — bold, milky, spiced to perfection.",                    veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Mysore Masala Tea.webp" },
   { name:"Peppermint Tea",              price:"₹20",  desc:"Cool, crisp peppermint steeped light. The perfect post-meal refresher.",                      veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Peppermint Tea.jpg" },
   { name:"Ginger / Cardamom Tea",       price:"₹20",  desc:"Double-spiced adrak-elaichi chai. Warming, bold, and deeply satisfying.",                     veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Ginger  Cardamom Tea.webp" },
-  { name:"Green / Gulab Tea",           price:"₹25",  desc:"Light green tea or delicate rose-infused brew — both beautiful in every sip.",                veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Green  Gulab Tea.webp" },
+  { name:"Green / Gulab Tea",           price:"₹25",  desc:"Light green tea or delicate rose-infused brew — both beautiful in every sip.",                veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/green_gulab_tea.jpg" },
   { name:"Lemon Tea",                   price:"₹25",  desc:"Black tea with a bright squeeze of lemon. Simple, zingy, and uplifting.",                     veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Lemon Tea.webp" },
-  { name:"Blue / Hibiscus Tea",         price:"₹30",  desc:"Butterfly pea flower or hibiscus tea — strikingly coloured, caffeine-free, and gorgeous.",   veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Blue hibiscus tea.webp" },
+  { name:"Blue / Hibiscus Tea",         price:"₹30",  desc:"Butterfly pea flower or hibiscus tea — strikingly coloured, caffeine-free, and gorgeous.",   veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/blue_hibuscus_tea.jpg" },
   /* ── HOT BEVERAGES ── */
   { name:"Badam Milk",                  price:"₹20",  desc:"Warm full-cream milk with almond powder, saffron, and cardamom.",                             veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Badam Milk.webp" },
-  { name:"Boost",                       price:"₹20",  desc:"Hot Boost malt drink — the energy and taste you grew up with.",                               veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Boost & Horlicks.jpg" },
-  { name:"Horlicks",                    price:"₹20",  desc:"Classic warm Horlicks malt. Nostalgic, nourishing, and comforting.",                          veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/Boost & Horlicks.jpg" },
+  { name:"Boost",                       price:"₹20",  desc:"Hot Boost malt drink — the energy and taste you grew up with.",                               veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/boost.jpg" },
+  { name:"Horlicks",                    price:"₹20",  desc:"Classic warm Horlicks malt. Nostalgic, nourishing, and comforting.",                          veg:true, cat:"Tea & Hot",  soon:false, img:"/cafe-imgs/horlicks.jpg" },
   /* ── FRESH JUICE ── */
   { name:"Lemon Juice",                 price:"₹30",  desc:"Freshly squeezed lemon juice with a pinch of black salt. Tangy and clean.",                   veg:true, cat:"Juice",      soon:false, img:"/cafe-imgs/Lemon Juice.webp" },
   { name:"Mosambi",                     price:"₹39",  desc:"Freshly squeezed sweet lime — light, tangy, and packed with vitamins.",                       veg:true, cat:"Juice",      soon:false, img:"/cafe-imgs/Orange.jpg" },
@@ -779,7 +779,7 @@ const MENU_ITEMS = [
   { name:"Chilli Garlic Fried Rice",    price:"₹69",  desc:"Fried rice with roasted garlic and green chilli. Simple, bold, and dangerously good.",         veg:true, cat:"Rice",       soon:false, img:"/cafe-imgs/Chilli Garlic Fried Rice.jpg" },
   { name:"Paneer Fried Rice",           price:"₹79",  desc:"Wok-fried rice with tender paneer cubes and aromatic seasoning. Our premium pick.",            veg:true, cat:"Rice",       soon:false, img:"/cafe-imgs/Paneer Fried Rice.jpg" },
   /* ── G.O.A.T SIGNATURE ── */
-  { name:"Interesting Coffee",          price:"₹25",  desc:"Our secret signature coffee blend — the one that started it all. You'll keep coming back.",    veg:true, cat:"Signature",  soon:false, img:"/cafe-imgs/regular_coffee.webp" },
+  { name:"Interesting Coffee",          price:"₹25",  desc:"Our secret signature coffee blend — the one that started it all. You'll keep coming back.",    veg:true, cat:"Signature",  soon:false, img:"/cafe-imgs/interesting_coffee.webp" },
   { name:"Chat Basket",                 price:"₹49",  desc:"A crispy basket filled with tangy, spiced chaat. Our most creative street-food mashup.",       veg:true, cat:"Signature",  soon:false, img:"/cafe-imgs/Chat Basket.avif" },
   { name:"Cold Coffee",                 price:"₹69",  desc:"Rich, frothy cold coffee blended smooth with chilled milk. Campus's #1 afternoon drink.",       veg:true, cat:"Signature",  soon:false, img:"/cafe-imgs/Cold Badam Milk.jpg" },
   { name:"Pasta Stick",                 price:"₹79",  desc:"Crispy pasta sticks with our signature dipping sauce. A creative G.O.A.T original.",           veg:true, cat:"Signature",  soon:false, img:"/cafe-imgs/Pasta Stick.jpg" },
@@ -791,6 +791,8 @@ const TABS = ["All","Coffee","Tea & Hot","Juice","Milkshakes","Chillers","Ice Cr
 function MenuSection() {
   const [active, setActive] = useState("All");
   const [showAll, setShowAll] = useState(false);
+  const menuGridRef = useRef(null);
+  const [gridAnimKey, setGridAnimKey] = useState(0);
   useEffect(() => { setShowAll(false); }, [active]);
   const items = active === "All" ? MENU_ITEMS : MENU_ITEMS.filter(m => m.cat === active);
   const isAllTab = active === "All";
@@ -812,14 +814,24 @@ function MenuSection() {
         </FadeUp>
         {/* Tabs */}
         <FadeUp delay={0.08}>
-          <style>{`@keyframes signaturePulse { 0%, 100% { box-shadow: 0 0 14px rgba(201,168,76,0.25); } 50% { box-shadow: 0 0 22px rgba(201,168,76,0.5); } }`}</style>
+          <style>{`@keyframes signaturePulse { 0%, 100% { box-shadow: 0 0 14px rgba(201,168,76,0.25); } 50% { box-shadow: 0 0 22px rgba(201,168,76,0.5); } } @keyframes menuFadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }`}</style>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 44 }}>
             {TABS.map(t => {
               const isActive = active === t;
               const isSignature = t === "Signature";
               const sigInactive = isSignature && !isActive;
               return (
-                <button key={t} onClick={() => setActive(t)}
+                <button key={t} onClick={() => {
+                    setActive(t);
+                    setGridAnimKey(k => k + 1);
+                    setTimeout(() => {
+                      const el = menuGridRef.current;
+                      if (!el) return;
+                      const navbarHeight = 80;
+                      const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+                      window.scrollTo({ top, behavior: "smooth" });
+                    }, 60);
+                  }}
                   style={{
                     background: isActive
                       ? C.gold
@@ -852,7 +864,7 @@ function MenuSection() {
           </div>
         </FadeUp>
         {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px,1fr))", gap: 20 }}>
+        <div ref={menuGridRef} key={gridAnimKey} style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px,1fr))", gap: 20, animation: "menuFadeIn 0.45s ease" }}>
           {visibleItems.map((item, i) => (
             <FadeUp key={item.name + i} delay={i * 0.04}>
               <div style={{ background: item.soon ? "rgba(255,255,255,0.01)" : item.cat === "Signature" ? `rgba(201,168,76,0.12)` : C.goldGlow, border: `1px solid ${item.soon ? C.gold+"0d" : item.cat === "Signature" ? C.gold+"66" : C.gold+"18"}`, borderRadius: 16, overflow: "hidden", transition: "all 0.3s", opacity: item.soon ? 0.65 : 1 }}
@@ -1464,7 +1476,7 @@ function ScrollToTop() {
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       style={{
-        position: "fixed", bottom: 28, left: "50%", transform: "translateX(-50%)",
+        position: "fixed", bottom: 28, left: "calc(50% - 40px)", transform: "translateX(-100%)",
         width: 48, height: 48, borderRadius: "50%", border: `1.5px solid ${C.gold}80`,
         background: "rgba(201,168,76,0.15)", color: C.gold, cursor: "pointer",
         display: "flex", alignItems: "center", justifyContent: "center",
@@ -1474,6 +1486,86 @@ function ScrollToTop() {
       onMouseEnter={e => e.currentTarget.style.background = "rgba(201,168,76,0.3)"}
       onMouseLeave={e => e.currentTarget.style.background = "rgba(201,168,76,0.15)"}>
       <ChevronUp size={22} />
+    </button>
+  );
+}
+
+function ScrollToMenu() {
+  const [vis, setVis] = useState(false);
+  useEffect(() => {
+    const h = () => {
+      const scrolled = window.scrollY > 400;
+      if (!scrolled) {
+        setVis(false);
+        return;
+      }
+      const menuEl = document.getElementById("menu");
+      if (!menuEl) {
+        setVis(true);
+        return;
+      }
+      const rect = menuEl.getBoundingClientRect();
+      // Hide button if the menu section currently occupies a significant portion of the viewport
+      // (i.e. top of section is above the bottom of viewport AND bottom of section is below the top of viewport)
+      const inMenuView = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.3;
+      setVis(!inMenuView);
+    };
+    h();  // run once on mount to set initial state correctly
+    window.addEventListener("scroll", h, { passive: true });
+    window.addEventListener("resize", h);
+    return () => {
+      window.removeEventListener("scroll", h);
+      window.removeEventListener("resize", h);
+    };
+  }, []);
+
+  const goToMenu = () => {
+    const el = document.getElementById("menu");
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: "smooth" });
+  };
+
+  return (
+    <button
+      onClick={goToMenu}
+      title="Jump to Menu"
+      style={{
+        position: "fixed",
+        bottom: 28,
+        left: "calc(50% + 40px)",
+        transform: "translateX(0)",
+        height: 48,
+        padding: "0 20px",
+        borderRadius: 100,
+        border: `1.5px solid ${C.gold}80`,
+        background: "rgba(201,168,76,0.15)",
+        color: C.gold,
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 8,
+        fontFamily: "'DM Sans', sans-serif",
+        fontSize: 12,
+        fontWeight: 600,
+        letterSpacing: 1.5,
+        textTransform: "uppercase",
+        opacity: vis ? 1 : 0,
+        pointerEvents: vis ? "auto" : "none",
+        transition: "opacity 0.3s ease, background 0.2s, color 0.2s",
+        zIndex: 9998,
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.background = C.gold;
+        e.currentTarget.style.color = "#1a1a1a";
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.background = "rgba(201,168,76,0.15)";
+        e.currentTarget.style.color = C.gold;
+      }}>
+      <Utensils size={16} />
+      View Menu
     </button>
   );
 }
@@ -1526,6 +1618,7 @@ export default function GoatCafe() {
       <Footer />
       <WAFloat />
       <ScrollToTop />
+      <ScrollToMenu />
     </div>
   );
 }
